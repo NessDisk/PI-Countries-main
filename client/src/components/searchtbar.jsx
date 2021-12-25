@@ -15,6 +15,8 @@ export default function SearchBar()
         e.preventDefault();
         // axios.get(search);
         dispatch( searchCountry(search))
+       
+
 
         console.log(filerteredCountrisx);
     }

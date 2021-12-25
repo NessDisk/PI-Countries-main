@@ -36,7 +36,7 @@ return {
     // )  
     let index = 0;   
     try{ 
-    for(index ; index <  10 ; index++)
+    for(index ; index <  250 ; index++)
     {
      result =  await Country.create(test[index])
     }
@@ -97,7 +97,7 @@ router.get("/:id",async(req, res, next)=>{
           res.json(CountrysDB)
     }catch(error)
     {
-        console.log(test[index]);
+        //console.log(test[index]);
         next(error)   
     } 
 }   
@@ -148,7 +148,6 @@ router.put("/",(req, res, next)=>{
  })
             
  router.delete("/",(req, res, next)=>{
-     
       Country.sync({ force: true }); 
      res.send("soy delete / Country")
  })

@@ -1,2 +1,6 @@
 export const ASCENDENTE = "ASCENDENTE"
 export const DECENDENTE = "DECENDENTE"
+export const POBLACION = "POBLACIÓN"
+export const MENOR_POBLACION = "MENOR_POBLACION"
+export const CONTIENENTE = "CONTIENENTE"
+export const ACTIVIDAD = "ACTIVIDAD"

@@ -15,6 +15,14 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       Dificulty: {
+        type: DataTypes.INTEGER,
+        allowNull: false,      
+      },
+      duracion: {
+        type: DataTypes.INTEGER,
+        allowNull: false,      
+      },
+      Temporada: {
         type: DataTypes.STRING,
         allowNull: false,      
       },

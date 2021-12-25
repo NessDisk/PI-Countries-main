@@ -1,0 +1,8 @@
+export const none = "none"
+export const Antarctic_Ocean = "Antarctic_Ocean"
+export const Americas = "Americas"
+export const Africa = "Africa"
+export const Asia = "Asia"
+export const Europe = "Europe"
+export const Oceania = "Oceania"
+export const Polar = "Polar"
