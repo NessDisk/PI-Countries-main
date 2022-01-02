@@ -1,17 +1,20 @@
 
-import { Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import Box from "./nav/box"
-
+import styles from "./nav.module.css";
+import SearchB from "./searchtbar.jsx"
 export default function  Nav()
 {
-    return <div>
-        <Link to={"/p"}>
-        <Box colorBox={"green"} distancia={1300} colorText={"white"} textinfo={"inicio"}/>
-        </Link>
-        <Link to={"/add"}>
-        <Box colorBox={"red"} distancia={1175} colorText={"white"} textinfo={"Añadir"} />
-        </Link>
-   
+    return <div  > 
+     
+        <ul>
+            <NavLink to={"/p"}><li> <a class="active" href="#home">inicio</a></li></NavLink>
+
+            <NavLink to={"/add"}> <li><a href="#news">Add Act</a></li> 
+            </NavLink>
+            <li><SearchB className={styles.SearchB}/></li>
+        </ul>
+
     </div>
 
 }

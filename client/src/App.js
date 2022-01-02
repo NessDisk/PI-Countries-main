@@ -9,6 +9,7 @@ import {Switch, Route} from "react-router";
 import OrderByActivity from './components/orderByActivity';
 import Inicial from './components/inicial'
 import Nav from './components/Nav';
+import stylesIni from "./components/inicial.module.css";
 function App() {
   return (
     <div className="App">
@@ -21,13 +22,27 @@ function App() {
                    <Nav/> 
                           <DetailCountry/>          
                   </Route>       
-                   <Route path="/p">
-                   <Nav/> 
-                         <SearchBar/>           
-                        <Order/> 
-                      <OrderbyContinente/>
-                          <OrderByActivity/>
-                          <Countrys/>
+                   <Route path="/p"  >
+                           <Nav />                              
+                         
+                      
+                          <ul>
+                         <div style={
+                            {float: 'right'}
+                            }>
+                    
+                          <li> <Order/>  </li>
+                          <li><OrderbyContinente /></li>
+                          <li><OrderByActivity/></li>
+                          </div>
+                          </ul> 
+
+                           
+
+
+                             <Countrys/>
+                        
+                     
                    </Route> 
                    <Route path="/">
                     

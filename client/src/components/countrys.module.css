@@ -1,0 +1,73 @@
+.countrys {
+    /* display: flex;
+    flex-direction: column;
+    gap: 0.5rem; */
+   
+    /* width: 100%; */
+    /* background-color: #8cffa0; */
+    /* padding: 5px; */
+    display: grid;
+    grid-template-columns: repeat(5, 3fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(10px, auto);
+    
+    /* display: grid;
+    grid-template-columns: fit-content(100px) fit-content(100px) 0fr;
+    grid-gap: 20px; */
+    box-sizing: border-box;
+    height: 200%;
+    width: 100%;
+    
+    
+    /* overflow: scroll;
+     height: 600px; */
+     /* width:  1500px; */
+  }
+  
+  @media screen and (min-width: 576px) {
+    .countrys {
+      flex-direction: row;
+      justify-content: center;
+    }
+  }
+
+
+  .button{
+    padding-left: inherit;
+    padding-right: inherit;
+    position: relative;
+    left: -400px;
+    right: 0;
+  
+    padding: 5px ;
+    padding-left: 10pt;
+    padding-right: 10pt;
+    background-color:rgba(255, 255, 255, 0.1)
+  }
+
+  .button2{
+    padding-left: inherit;
+    padding-right: inherit;
+    position: relative;
+    left: 400px;
+    right: 0;
+    
+    bottom: unset;
+    padding: 5px;
+    padding-left: 10pt;
+    padding-right: 10pt;
+
+    background-color:rgba(255, 255, 255, 0.1)
+
+  }
+  .fondo{
+    background-image:  url("./image.jpg");
+    background-position: right bottom, left top;
+    background-repeat: no-repeat, repeat;
+    padding: 1000px;
+    width: '100vw';
+    height: '100vh';
+  }
+  
+
+  

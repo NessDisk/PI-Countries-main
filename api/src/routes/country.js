@@ -19,9 +19,12 @@ if(citis.length === 0 )
 {
 
 
+   
 
 let test = datas.data.map((countrys)=>{
-return {
+    // console.log(countrys.alpha3Code) 
+    return {     
+              id: countrys.alpha3Code, 
             name: countrys.name,
             imageflag:countrys.flag,
             Continente: countrys.region,

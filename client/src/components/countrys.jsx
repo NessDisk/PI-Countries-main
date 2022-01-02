@@ -2,6 +2,12 @@ import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState } from "react"
 import { getAllCountry } from "../store/actions"
 import Country from "../components/country"
+import styles from "./countrys.module.css";
+
+import background from "./image.jpg";
+import stylesIni from "./inicial.module.css";
+import { HiChevronDoubleLeft, HiChevronDoubleRight } from "react-icons/hi";
+
 
 export default function  Countrys()
 {
@@ -36,25 +42,54 @@ console.log(auxNumAction)
 
    
 
-    return <div>        
+    return <div  >        
      {/* {   <button type="submit" value="<<" onSubmit={ActionOnSumbite} />
         <button type="submit" value=">>" onSubmit={ActionOnSumbite} />} */}
         
-        <form >
-      <input type="submit" onClick={ActionOnSumbite} value="<<"/>
-      <input type="submit" onClick={ActionOnSumbite} value=">>"/>
-    </form>
-       {
-           Countryx.slice(auxNumAction-10, auxNumAction).map(
-               (country)=>{
-                         
-                return  <Country key={x++}  id={country.id} name={country.name}   flag={country.imageflag} />
-               }
-           )
+        {/* <div style={{ backgroundImage: `url(${background } )` ,
+   backgroundPosition: 'center',
+   backgroundSize: 'cover',
+   backgroundRepeat: 'no-repeat',
+   width: '100vw',
+   height: '100vh'
+}}/> */}
 
-        }
-           
-           
+{/* <div style={styles.fondo}/> */}
+      {
+      Countryx.length > 0?
+            <>
+    <div  className={styles.countrys} /*className="photo-container" */ >
+      { 
+            
+          Countryx.slice(auxNumAction-10, auxNumAction).map(
+          
+            (country)=>{
+                  
+                
+                  return  <Country  key={x++}  id={country.id}  name={country.name} continente={country.Continente}  flag={country.imageflag} />
+                }
+                )
+          
+            }
 
+    </div>  
+
+    </>:
+                 <div>No existe pais con ese ambito</div>
+                 }
+   <ul>
+            {/* <input type="submit" onClick={ActionOnSumbite}   value="<<"><HiChevronDoubleLeft /> </input>    
+            <input type="submit" onClick={ActionOnSumbite} value=">>"><HiChevronDoubleRight /></input>    */}
+        <button type="submit" onClick={ActionOnSumbite} value="<<" className={styles.button} >
+        <HiChevronDoubleLeft style={{
+            color: "white"
+        }} />
+      </button>
+      <button type="submit" onClick={ActionOnSumbite} value=">>"  className={styles.button2}>
+        <HiChevronDoubleRight  style={{
+            color: "white"
+        }}/>
+      </button>
+   </ul>
     </div>
 }

@@ -1,10 +1,20 @@
 import { Link } from "react-router-dom"
-export default function  Country({id,name, flag} )
+import React from 'react';
+import styles from "./country.module.css";
+
+export default function  Country({id,name,continente, flag} )
+
 {
-    return <div>
+ 
+
+    return <div className={styles.country}>
       <Link to={`/p/${id}`}>
-      <h1> {name}</h1> 
-      <img src={flag}/>
+      <div>
+      <img src={flag} className={styles.flag}/>
+      <h5>{name} / {continente}</h5>  
+     
+      </div>
+
       </Link>
           
     </div>

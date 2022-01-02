@@ -51,6 +51,16 @@ res.send(countrys_Acti )
 // res.send("test")
 })
 
+router.get("/all",async(req, res, next)=>{
+    // const ActivityByCountrys  = await  Country_Activity.findAll()
+    const ActivityByCountrys  = await Activity.findAll(
+        { include: Country }
+    )
+    res.json(ActivityByCountrys )
+
+
+})
+
 router.post("/", async(req, res, next)=>{
 // creamos una nueva actividad que pasamos por el body
 console.log(req.body)

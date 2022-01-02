@@ -24,24 +24,46 @@ export default  function  AddActivity()
 
     e.preventDefault();
       
-   
+    let DificultadAux  =  document.getElementById("Dificultad")
+    let DuracionAux = document.getElementById("Duracion")
+    let TemporadaAux = document.getElementById("Temporada")
+    setDificulty(DificultadAux.value)
+    setDuration(DuracionAux.value)
+    
+    setSeason(TemporadaAux.value)
+      
+ 
+    //    console.log(DificultadAux.value)
+ //    { Dificultad
+ //     Duracion
+ //     Temporada}
+ // ciudades  activas
 
-     // ciudades  activas
+ 
+
      let ciudades = []
        ciudades  =  document.getElementsByClassName("ciudades")
 
-   let result = []
+     let result = []
      let  AuxResult ={}
      let auxIndex;
     for(let i = 0 ; i < ciudades.length; i++)
     {
-            if(ciudades[i].checked === true)
-            {
-               AuxResult[ciudades[i].name] = ciudades[i].name
-                //  result.push(ciudades[i])
+            // if(ciudades[i].checked === true)
+            // {
+            //    AuxResult[ciudades[i].name] = ciudades[i].name
+            //     //  result.push(ciudades[i])
                 
-            }
+            // }
+            // result.push(ciudades[i].target.value)
+            AuxResult[ciudades[i].value] = ciudades[i].value
+            
     }
+   
+for (index = ciudades.length - 1; index >= 0; index--) {
+    ciudades[index].parentNode.removeChild(ciudades[index]);
+}
+console.log(AuxResult);
 
       //crea la nueva actividad  post
       await dispatch(AddNewActivity(
@@ -59,14 +81,30 @@ export default  function  AddActivity()
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log('You clicked submit.');
-        // var x = document.createElement("INPUT");
-        // x.setAttribute("type", "button");
-        // x.setAttribute("value", "Click me");
-        // document.body.appendChild(x);
-        document.getElementById(2)
-        console.log(   document.getElementById(2).checked);
-// debugger
+        // console.log('You clicked submit.');
+        // // var x = document.createElement("INPUT");
+        // // x.setAttribute("type", "button");
+        // // x.setAttribute("value", "Click me");
+        // // document.body.appendChild(x);
+        // document.getElementById(2)
+        // console.log(   document.getElementById(2).checked);
+        // var btn = document.createElement("BUTTON");
+        // btn.innerHTML = "CLICK ME";
+        var sel = document.createElement("select");
+        sel.className = "ciudades";
+        sel.name= "select";
+        for (let index = 0; index < Countryx.length; index++) {
+            const element = Countryx[index];
+            var opt1 = document.createElement("option");
+            // className="ciudades" key={country.id} name={country.name}
+           
+            opt1.value = Countryx[index].name;
+            opt1.text =  Countryx[index].name;
+            sel.add(opt1, null)
+            document.body.appendChild(sel);
+            
+        }
+
       }
 
       useEffect(() => {      // se ejecuta al principio cuando se lanza el compenente
@@ -101,26 +139,49 @@ export default  function  AddActivity()
 <div>
 
         <form onSubmit={submitAction}>
+         <h5>llena el formulario para aregar una nueva actividad</h5>
            <br/>     
-           <label htmlFor="">name activity</label>
+           <label htmlFor="">Nombre</label>
            <input type="text" onChange={OnchenageActivity} value={name}/>
-           <br/>      
-           <label htmlFor="">Dificulty</label>
-           <input type="text" onChange={OnchenageDificulty} value={Dificulty}/>
-           <br/>     
+           <br/>          
+           <br/>
+           <label htmlFor="">Dificultad</label>
+           <select name="select" id="Dificultad" onChange={OnchenageDificulty} value={Dificulty}>
+           <option value={"1"} > 1</option>
+           <option value={"2"} > 2</option>
+           <option value={"3"} > 3</option>
+           <option value={"4"} > 4</option>         
+           <option value={"5"} > 5</option>
+          </select>
+          <br/>
+           <br/> 
+           
            <label htmlFor="">Duracion</label>
-           <input type="text" onChange={OnchenageDuration} value={duracion}/>
-           <br/>     
+           <select name="select" id="Duracion" onChange={OnchenageDuration} value={duracion}>
+           <option value={"1"} > 1</option>
+           <option value={"2"} > 2</option>
+           <option value={"3"} > 3</option>
+           <option value={"4"} > 3</option>         
+           <option value={"5"} > 5</option>
+          </select>
+           <br/>
+           <br/>      
            <label htmlFor="">Temporada</label>
-           <input type="text" onChange={OnchenageTemporada} value={Temporada}/>
-           <br/>       
+           <select name= "select" id="Temporada" onChange={OnchenageTemporada} value={Temporada}>
+           <option value={"Primavera"} > Primavera</option>
+           <option value={"Verano"} >    verano</option>
+           <option value={"Otoño"} >     Otoño</option>
+           <option value={"Invierno"} >  Invierno</option> 
+          </select>
+           <br/>
+           <br/>           
            <h2> seleccionas actividad para las ciudades</h2>
-           { Countryx.map( (country)=>{
+           {/* { Countryx.map( (country)=>{
 
                 return<div>
                      <input type="checkbox" className="ciudades" key={country.id} name={country.name} /> {country.name} 
                 </div>
-            })  }
+            })  } */}
 
            <input type="submit" />   
 
@@ -133,11 +194,13 @@ export default  function  AddActivity()
 {/* {<input type="checkbox" id={2} name= "aa" /> hola mundo
 
 
-
+*/}
 <form onSubmit={handleSubmit}>
       <button type="submit">Submit</button>
-    </form>} */}
+    </form>
 
+
+{/* <button onclick={console.log("test")} >Try it</button> */}
 </div>
     </div>
    }
