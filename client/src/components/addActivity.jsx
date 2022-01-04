@@ -1,8 +1,11 @@
 import { useDispatch, useSelector } from "react-redux"
 import { AddNewActivity, getAllCountry, getAllActivity } from "../store/actions"
 import { useEffect, useState} from "react"
+import styles from "./addActivity.module.css"
 
+import CardAdd from "./addCard"
 
+import Addselector from "./addSelector"
 
 export default  function  AddActivity()
 {
@@ -16,191 +19,224 @@ export default  function  AddActivity()
     const [duracion, setDuration] = useState(``)
     const [Temporada, setSeason] = useState(``)
     
-    let array
-
-    let dispatch = useDispatch()
-
-    async function  submitAction(e) {
-
-    e.preventDefault();
-      
-    let DificultadAux  =  document.getElementById("Dificultad")
-    let DuracionAux = document.getElementById("Duracion")
-    let TemporadaAux = document.getElementById("Temporada")
-    setDificulty(DificultadAux.value)
-    setDuration(DuracionAux.value)
     
-    setSeason(TemporadaAux.value)
-      
- 
-    //    console.log(DificultadAux.value)
- //    { Dificultad
- //     Duracion
- //     Temporada}
- // ciudades  activas
-
- 
-
-     let ciudades = []
-       ciudades  =  document.getElementsByClassName("ciudades")
-
-     let result = []
-     let  AuxResult ={}
-     let auxIndex;
-    for(let i = 0 ; i < ciudades.length; i++)
-    {
-            // if(ciudades[i].checked === true)
-            // {
-            //    AuxResult[ciudades[i].name] = ciudades[i].name
-            //     //  result.push(ciudades[i])
-                
-            // }
-            // result.push(ciudades[i].target.value)
+    let dispatch = useDispatch()
+    
+    async function  submitAction(e) {
+        
+        e.preventDefault();
+        let NombreAux  =  document.getElementsByClassName("Nombre")
+        let DificultadAux  =  document.getElementsByClassName("Dificultad")
+        let DuracionAux = document.getElementsByClassName("Duracion")
+        let TemporadaAux = document.getElementsByClassName("Temporada")
+        // setDificulty(DificultadAux.value)
+        // setDuration(DuracionAux.value)
+        
+        // setSeason(TemporadaAux.value)
+        
+        
+        //    console.log(DificultadAux.value)
+        //    { Dificultad
+        //     Duracion
+        //     Temporada}
+        // ciudades  activas
+        
+        
+        
+        let ciudades = []
+        ciudades  =  document.getElementsByClassName("ciudades")
+        
+        
+        let  AuxResult ={}
+        
+        for(let i = 0 ; i < ciudades.length; i++)
+        {
             AuxResult[ciudades[i].value] = ciudades[i].value
             
-    }
-   
-for (index = ciudades.length - 1; index >= 0; index--) {
-    ciudades[index].parentNode.removeChild(ciudades[index]);
-}
-console.log(AuxResult);
-
-      //crea la nueva actividad  post
-      await dispatch(AddNewActivity(
-        {
-            actividad:{name ,Dificulty,duracion,Temporada},
-            AuxResult
         }
-     ))
+        
+        // for (index = ciudades.length - 1; index >= 0; index--) {
+        //     ciudades[index].parentNode.removeChild(ciudades[index]);
+        // }
 
-// console.log(AuxResult);
-}
+        
+        // console.log(AuxResult);
+        
+        // //crea la nueva actividad  post
+        // await dispatch(AddNewActivity(
+        //     {
+        //         actividad:{name ,Dificulty,duracion,Temporada},
+        //         AuxResult
+        //     }
+        //     ))
+
+            for (let index = 0; index < DificultadAux.length; index++) {
+             console.log("contador")
+let name = NombreAux[index].value;
+let Dificulty = DificultadAux[index].value;
+let duracion = DuracionAux[index].value;
+let Temporada = TemporadaAux[index].value;
+setNombre(name)
+setDificulty(Dificulty)
+setDuration(duracion)
+setSeason(Temporada)
+                // await dispatch(AddNewActivity(
+                //     {
+                //         actividad:{name ,Dificulty,duracion,Temporada },
+                //         AuxResult
+                //     }
+                //     ))  
+                    await dispatch(AddNewActivity(
+                        {
+                            actividad:{
+                                name,
+                                Dificulty,
+                                duracion,
+                                Temporada
+                                     },
+                            AuxResult
+                        }
+                        ))  
 
 
-   
+            }
+            window.location.href="/add"
+            window.alert("La actividad se posteo correctamente");
 
-    function handleSubmit(e) {
-        e.preventDefault();
-        // console.log('You clicked submit.');
-        // // var x = document.createElement("INPUT");
-        // // x.setAttribute("type", "button");
-        // // x.setAttribute("value", "Click me");
-        // // document.body.appendChild(x);
-        // document.getElementById(2)
-        // console.log(   document.getElementById(2).checked);
-        // var btn = document.createElement("BUTTON");
-        // btn.innerHTML = "CLICK ME";
-        var sel = document.createElement("select");
-        sel.className = "ciudades";
-        sel.name= "select";
-        for (let index = 0; index < Countryx.length; index++) {
-            const element = Countryx[index];
-            var opt1 = document.createElement("option");
-            // className="ciudades" key={country.id} name={country.name}
-           
-            opt1.value = Countryx[index].name;
-            opt1.text =  Countryx[index].name;
-            sel.add(opt1, null)
-            document.body.appendChild(sel);
+        }
+        
+        
+        
+        
+        function handleSubmit(e) {
+            e.preventDefault();
+            
+            var sel = document.createElement("select");
+            sel.className = "ciudades";
+            sel.name= "select";
+            for (let index = 0; index < Countryx.length; index++) {
+                const element = Countryx[index];
+                var opt1 = document.createElement("option");
+                
+                opt1.value = Countryx[index].name;
+                opt1.text =  Countryx[index].name;
+                sel.add(opt1, null)
+                document.body.appendChild(sel);
+                
+            }
             
         }
-
-      }
-
-      useEffect(() => {      // se ejecuta al principio cuando se lanza el compenente
-         
-         dispatch(getAllCountry()) //ejecuta la accion       
-         dispatch(getAllActivity())
+        
+        useEffect(() => {      // se ejecuta al principio cuando se lanza el compenente
+            
+            dispatch(getAllCountry()) //ejecuta la accion       
+            dispatch(getAllActivity())
+            
+        }, [])
+        
+        let index = 0;
+        
+        
+        
+        function OnchenageActivity(e) {
+            e.preventDefault();
+            setNombre(e.target.value)
+        }
+        function OnchenageDificulty(e) {
+            e.preventDefault();
+            setDificulty(e.target.value)
+        }
+        function OnchenageDuration(e) {
+            e.preventDefault();
+            setDuration(e.target.value)
+        }
+        function OnchenageTemporada(e) {
+            e.preventDefault();  
+            setSeason(e.target.value)
+        }
+        
+        
+        const [Count, setCount] = useState(1)
+    
+        let arrayAux = [] 
+        
+        for (let index = 0; index < Count; index++) {
           
-      }, [])
+            
+            arrayAux.push(<CardAdd/>); 
+            
+        }
+        
+function UpCount(e)
+{
 
-      let index = 0;
+    e.preventDefault();
+    console.log("test funcion")
+    setCount(Count+1)
+}
 
+// selector funtions
+const [CountSelector, setCountSelector] = useState(1)
+
+let arraySelctorAux = [] 
+        
+for (let index = 0; index < CountSelector; index++) {
+  
+    
+    arraySelctorAux.push(<Addselector/>); 
+    
+}
+
+        
+function UpCountSelector(e)
+{
+
+    e.preventDefault();
+   
+    setCountSelector(CountSelector+1)
+}
+
+
+
+        return <div >
+       
+      <h1>Añade una actividad</h1>
+<div className={styles.control}>  
+        {
+                arrayAux.map((x)=>{
+return  x
+                })
+
+        }
+        <form  onSubmit={UpCount}>
+        <input type="submit"  value="Add Actividad" id="UpCount"/>
+        </form>
+<div >
       
-
-      function OnchenageActivity(e) {
-        e.preventDefault();
-        setNombre(e.target.value)
-      }
-      function OnchenageDificulty(e) {
-        e.preventDefault();
-        setDificulty(e.target.value)
-    }
-    function OnchenageDuration(e) {
-        e.preventDefault();
-        setDuration(e.target.value)
-    }
-    function OnchenageTemporada(e) {
-        e.preventDefault();  
-        setSeason(e.target.value)
-    }
-
-    return <div>
-<div>
-
-        <form onSubmit={submitAction}>
-         <h5>llena el formulario para aregar una nueva actividad</h5>
-           <br/>     
-           <label htmlFor="">Nombre</label>
-           <input type="text" onChange={OnchenageActivity} value={name}/>
-           <br/>          
-           <br/>
-           <label htmlFor="">Dificultad</label>
-           <select name="select" id="Dificultad" onChange={OnchenageDificulty} value={Dificulty}>
-           <option value={"1"} > 1</option>
-           <option value={"2"} > 2</option>
-           <option value={"3"} > 3</option>
-           <option value={"4"} > 4</option>         
-           <option value={"5"} > 5</option>
-          </select>
-          <br/>
-           <br/> 
-           
-           <label htmlFor="">Duracion</label>
-           <select name="select" id="Duracion" onChange={OnchenageDuration} value={duracion}>
-           <option value={"1"} > 1</option>
-           <option value={"2"} > 2</option>
-           <option value={"3"} > 3</option>
-           <option value={"4"} > 3</option>         
-           <option value={"5"} > 5</option>
-          </select>
-           <br/>
-           <br/>      
-           <label htmlFor="">Temporada</label>
-           <select name= "select" id="Temporada" onChange={OnchenageTemporada} value={Temporada}>
-           <option value={"Primavera"} > Primavera</option>
-           <option value={"Verano"} >    verano</option>
-           <option value={"Otoño"} >     Otoño</option>
-           <option value={"Invierno"} >  Invierno</option> 
-          </select>
-           <br/>
-           <br/>           
-           <h2> seleccionas actividad para las ciudades</h2>
-           {/* { Countryx.map( (country)=>{
-
-                return<div>
-                     <input type="checkbox" className="ciudades" key={country.id} name={country.name} /> {country.name} 
-                </div>
-            })  } */}
-
-           <input type="submit" />   
-
-           
-       </form>
+</div>
 
 </div>
+
+{/* selector  */}
+
+{
+                arraySelctorAux.map((x)=>{
+return <li>{x} </li>
+                })
+
+        }
+        <li>
+  <form  onSubmit={UpCountSelector}>
+        <input type="submit"  value="Add_Country" id="UpCountSelector"/>
+        </form>
+        </li>
+
 <div>
 
-{/* {<input type="checkbox" id={2} name= "aa" /> hola mundo
+</div>
 
-
-*/}
-<form onSubmit={handleSubmit}>
-      <button type="submit">Submit</button>
+<form onSubmit={submitAction}>
+      <button type="submit">Post Actividad</button>
     </form>
-
-
-{/* <button onclick={console.log("test")} >Try it</button> */}
-</div>
     </div>
    }

@@ -13,7 +13,7 @@ export default function SearchBar()
     function onSumbite(e)
     {
         e.preventDefault();
-        // axios.get(search);
+     
         dispatch( searchCountry(search))
        
 

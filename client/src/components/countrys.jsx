@@ -12,21 +12,40 @@ import { HiChevronDoubleLeft, HiChevronDoubleRight } from "react-icons/hi";
 export default function  Countrys()
 {
     let Countryx  = useSelector((state) => state.countris)
+    let pos = 0;
+    const [auxNumAction, setActionNum] = useState(9);
+    const [ReducerCount, setCount] = useState(9);
+    const [Count, setCountAux] = useState(0);
 
-    const [auxNumAction, setActionNum] = useState(10);
-    //let auxNum = 12;
-   
   async function ActionOnSumbite(e)  
     {
         e.preventDefault();
-if(e.target.value === ">>")
-{
+
+
+
+
+if(e.target.value === ">>"&& (auxNumAction+10) < 260  )
+{  
+    if(Count+1 >0)
+    {
+        setCount(10);
+    }
+
+    setCountAux(Count+1);
+
+  
+
     setActionNum(auxNumAction+10);
-}else{
-    
+}else if(e.target.value === "<<" && (auxNumAction-10) > 0 ){
+  
+    if((Count-1) === 0 )
+    {
+        setCount(9);
+    }
+
+    setCountAux(Count-1);
     setActionNum(auxNumAction-10);
 }
-console.log(auxNumAction)
 
         
     }
@@ -35,51 +54,50 @@ console.log(auxNumAction)
        
         dispatch(getAllCountry()) //ejecuta la accion       
         
+      
+        let ciudades = []
+        ciudades  =  document.getElementsByClassName("ciudades")
+ 
+        for ( let i = ciudades.length - 1; i >= 0; i--) {
+     ciudades[i].parentNode.removeChild(ciudades[i]);
+ }
+    
+
     }, [])
 
         let x= 0
         let limiteCiclos = 0;
 
+
+    return <div>        
    
-
-    return <div  >        
-     {/* {   <button type="submit" value="<<" onSubmit={ActionOnSumbite} />
-        <button type="submit" value=">>" onSubmit={ActionOnSumbite} />} */}
-        
-        {/* <div style={{ backgroundImage: `url(${background } )` ,
-   backgroundPosition: 'center',
-   backgroundSize: 'cover',
-   backgroundRepeat: 'no-repeat',
-   width: '100vw',
-   height: '100vh'
-}}/> */}
-
-{/* <div style={styles.fondo}/> */}
       {
       Countryx.length > 0?
             <>
-    <div  className={styles.countrys} /*className="photo-container" */ >
+    <div  className={styles.countrys}  >
       { 
             
-          Countryx.slice(auxNumAction-10, auxNumAction).map(
-          
-            (country)=>{
-                  
+                Countryx.slice(auxNumAction -ReducerCount, auxNumAction).map(
                 
-                  return  <Country  key={x++}  id={country.id}  name={country.name} continente={country.Continente}  flag={country.imageflag} />
-                }
-                )
-          
-            }
+                  (country)=>{
+                        
+                      
+                        return  <Country  key={x++}  id={country.id}  name={country.name} continente={country.Continente}  flag={country.imageflag} />
+                      }
+                      )
+                
+                  }
+
+            
 
     </div>  
 
     </>:
                  <div>No existe pais con ese ambito</div>
                  }
+ 
    <ul>
-            {/* <input type="submit" onClick={ActionOnSumbite}   value="<<"><HiChevronDoubleLeft /> </input>    
-            <input type="submit" onClick={ActionOnSumbite} value=">>"><HiChevronDoubleRight /></input>    */}
+          
         <button type="submit" onClick={ActionOnSumbite} value="<<" className={styles.button} >
         <HiChevronDoubleLeft style={{
             color: "white"
@@ -91,5 +109,6 @@ console.log(auxNumAction)
         }}/>
       </button>
    </ul>
+  
     </div>
 }

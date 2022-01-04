@@ -11,8 +11,7 @@ router.get("/",async(req, res, next)=>{
 })
 
 router.get("/AC/:name",async(req, res, next)=>{
-   // const activitis  =  await Activity.findAll()
-//    res.send(activitis)  
+
 
     const namex = req.params.name
 // encuentra el ID de la acticidad
@@ -30,7 +29,6 @@ let  Activityx = await Activity.findOne(
      }
    
 )
-// res.send(ActivityByCountrys) 
 
 // Crea un array donde se organizan agregan los paises
 // que tienen esta actividad 
@@ -48,11 +46,11 @@ for(let i = 0; i < ActivityByCountrys.length ; i++ )
 
 
 res.send(countrys_Acti )
-// res.send("test")
+
 })
 
 router.get("/all",async(req, res, next)=>{
-    // const ActivityByCountrys  = await  Country_Activity.findAll()
+    
     const ActivityByCountrys  = await Activity.findAll(
         { include: Country }
     )
@@ -64,27 +62,31 @@ router.get("/all",async(req, res, next)=>{
 router.post("/", async(req, res, next)=>{
 // creamos una nueva actividad que pasamos por el body
 console.log(req.body)
-//res.send(req.body.activity.AuxResult);
+
 
 try{  
 const {
-     name,
-     Dificulty,
-     duracion,
-     Temporada
+    name,
+    Dificulty,
+    duracion,
+    Temporada
  } = req.body.activity.actividad
+ console.log(name+"/"+
+ Dificulty+"/"+
+ duracion+"/"+
+ Temporada)
  const newActivity =  await Activity.create(
-    {   name,
-        Dificulty,
-        duracion,
-        Temporada
+    {   name:name,
+        Dificulty:Dificulty,
+        duracion:duracion,
+        Temporada:Temporada
     }
  )
-
+console.log(req.body.activity.AuxResult)
 
  let arrayCountris   = Object.keys(req.body.activity.AuxResult)
  // creamos buscamos por parametro el id de la ciudad y la sostenemos
-// res.send(arrayCountris)
+
  for(let i = 0; i < arrayCountris.length ; i++ )
  {
    
@@ -94,8 +96,9 @@ const {
          { where: { name: {
              [Op.iLike]: "%"+namex+"%"
             }},
-        })
-        // res.send()
+        }) 
+        console.log(CountryX)
+
         
     // los relacionamos  en las tablas intermedias 
     //await CountryX.addActivity(newActivity.id ,  { through: { selfGranted: false } })
@@ -105,11 +108,6 @@ const {
  //retornar la nueva actividad
 const activitis  =  await Activity.findAll()
 res.send(activitis)
-
-
-// res.send(activitis)
-
-
 
 }catch(error)
 {

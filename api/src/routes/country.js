@@ -21,8 +21,8 @@ if(citis.length === 0 )
 
    
 
-let test = datas.data.map((countrys)=>{
-    // console.log(countrys.alpha3Code) 
+    let test = datas.data.map((countrys)=>{
+
     return {     
               id: countrys.alpha3Code, 
             name: countrys.name,
@@ -35,8 +35,7 @@ let test = datas.data.map((countrys)=>{
 }
 
 })
-    // const CountryResult =  await Country.create(test[0]
-    // )  
+
     let index = 0;   
     try{ 
     for(index ; index <  250 ; index++)
@@ -66,14 +65,14 @@ let test = datas.data.map((countrys)=>{
     router.get("/prueba",async(req, res, next)=>{
         const citis  =  await Country.findAll()
         res.send(citis)
-        // res.send("esto es una prueba")
+
         }
         
            )
 
 router.get("/query",async(req, res, next)=>{
                let name =  req.query.name 
-           //  let name =  req.params.name 
+
            const  CountrysDB = await Country.findAll(
             { where: { name: {
                     [Op.iLike]: "%"+name+"%"
@@ -100,7 +99,7 @@ router.get("/:id",async(req, res, next)=>{
           res.json(CountrysDB)
     }catch(error)
     {
-        //console.log(test[index]);
+
         next(error)   
     } 
 }   
@@ -109,7 +108,7 @@ router.get("/:id",async(req, res, next)=>{
     
     
 router.post("/",async(req, res, next)=>{
-    // res.send("soy post / Country")
+
 
     try{        
         const{name,

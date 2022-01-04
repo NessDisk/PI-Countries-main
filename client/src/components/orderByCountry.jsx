@@ -15,10 +15,13 @@ import {Order_Continente} from "../store/actions/index"
 export default function OrderbyContinente()
 {       
 const dispach =useDispatch()
+
 function onSelectChange(e)
 {  
+    debugger
+    e.preventDefault();
+  
        dispach(Order_Continente(e.target.value));  
-
 }
 
 

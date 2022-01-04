@@ -26,7 +26,7 @@ const initialState ={
  {    
   
     let orderCountry;
-
+    
 switch(action.type)
 {
 case GET_ALL_COUNTRY:
@@ -109,7 +109,7 @@ case MAYOR_MENOR:
 case ORDER_CONTINENT:
 
      orderCountry = [...state.filerteredCountris]
-    
+   
      
     if(none !== action.payload)
     {  

@@ -1,25 +1,5 @@
 .country {
-    /* border-style: solid;
-    border-width: 1px;
-    border-color: black;
-    border-radius: 0.5rem;
-  
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 1fr 2fr;
-    align-items: center;
-  
-    position: relative; */
-
-
-/*     
-    width: 100%;
-    border-radius: 10px;
-    background-color: peru;
-    display: null; 
-    margin: 10px;
-    box-shadow: rgba(0, 0, 0, 0.295) 0px 0px 10px ; */
-
+   
     border-style: solid;
     border-width: 1px;
     border-color: black;
@@ -33,6 +13,7 @@
     align-items: center;
   
     position: relative;
+    background-color: rgba(168, 168, 168, 0.418);
 
   }
 

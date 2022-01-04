@@ -12,11 +12,11 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
         primaryKey: true,
-      //  defaultValue: DataTypes.UUIDV4
+      
     },
     name: {
-      type: DataTypes.STRING,
-      allowNull: false,
+      type: DataTypes.STRING, 
+      allowNull: false, 
     },
     imageflag: {
       type: DataTypes.STRING,
@@ -40,7 +40,7 @@ module.exports = (sequelize) => {
     Poblation: {
       type: DataTypes.INTEGER,
       allowNull: false,
-    },
+    }, 
 
   });
 };

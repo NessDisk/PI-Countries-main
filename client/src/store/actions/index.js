@@ -47,18 +47,19 @@ export function searchCountry(search)
 }
 
 export function AddNewActivity(activity)
-{
+{ 
+   
     return function(dispatch){
         
+        console.log("cambie el name")         
         axios.post('http://localhost:3001/api/activity',
         {
             activity
         })
-        .then((activity)=> {  
-            console.log(activity)         
+        .then((activitys)=> {  
             dispatch({
             type:ADD_ACTIVITY,
-            payload: activity.data
+            payload: activitys.data
             })
         }).catch(error =>  {
             console.log(error)
@@ -128,6 +129,7 @@ export function Order_Population(Order)
 
 export function Order_Continente(Continen)
 {
+   
         return {
         type:ORDER_CONTINENT,
         payload: Continen

@@ -1,5 +1,5 @@
 export const none = "none"
-export const Antarctic_Ocean = "Antarctic_Ocean"
+export const Antarctic_Ocean = "Antarctic Ocean"
 export const Americas = "Americas"
 export const Africa = "Africa"
 export const Asia = "Asia"

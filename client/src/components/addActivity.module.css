@@ -1,0 +1,9 @@
+.control{
+    display: grid;
+    grid-template-columns: repeat(3, 3fr);
+    grid-template-rows: 1fr 0fr;
+    align-items: center;
+  
+    position: relative;
+    background-color: rgba(168, 168, 168, 0.418);
+}

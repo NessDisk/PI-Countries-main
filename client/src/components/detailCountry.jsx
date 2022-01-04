@@ -3,6 +3,7 @@ import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux"
 import Countrys from "./countrys";
 import axios from "axios";
+import styles from "./detailCountry.module.css"
 
 export default function DetailCountry()
 {
@@ -15,9 +16,6 @@ export default function DetailCountry()
     
     useEffect(() => {
       
-        // ActivityAux.forEach(element => {
-        //     console.log(ActivityAux)
-        // });
 
         axios.get("http://localhost:3001/api/country/"+id)
         .then((response)=>{
@@ -37,61 +35,21 @@ export default function DetailCountry()
             setActivity(null)
         }
 
-        // encuentra actividad turistica
+
       
       
     }, [])
 
-async  function  Random()
-{
-//   const auxArray
-    // axios.get("http://localhost:3001/api/activity/all")
-    // .then((response)=>{
-       
-    //    // setCountry(response.data)
-    //     console.log(response)
-    //     auxArray = response;
 
-
-
-    // })
-    // return()=>{
-          
-    //     console.log("no hay data")
-    // }
-// console.log(activity)
-
-    // recorremos todas las actividades.
-// for (let index = 0; index < auxArray.data.length; index++) {
-//     const actividadAux = auxArray.data[index];
-//     //recorremos todos los paises de esas actividades
-//     for (let e = 0; e < actividadAux.countries.length; e++) {
-//         const countryAux = actividadAux.countries[e];
-        
-//         // Encontramos si el pais detallado se encuentra 
-    
-//     //     if(country.name === countryAux.name)
-//     //   {
-//           console.log("testo")
-//     // return <h2>
-//     // txt
-//     // </h2>
-//     //   }
-    
-    
-//     }
-//     }
-
-
-
-}
-
-    return <div>
+//cuadriculas
+    return <div className={styles.control}>
 {
     country?
     <>
+    <div>
+        <div className={styles.cardCountryFirst}>
     <h3> {country.name +" - " + country.id}</h3>
-    <img src={country.imageflag} alt="image" />
+    <img src={country.imageflag} alt="image" className={styles.flag}/>
     <h2  style={{
         textAlign: "center"     
     }}>   {"Continente: " + country.Continente} <br/> 
@@ -100,7 +58,10 @@ async  function  Random()
            Area:{country.Area} <br/>
            Población:{country.Poblation} <br/>
     </h2>
+    </div>
+
     
+    </div>
     {/* <h2>
 
 {activity[0].name}
@@ -120,14 +81,17 @@ activity.map((x)=>{
 
 if(c.name === country.name)
 {
-    console.log(c.name === country.name);
-    return <h2 style={{
+    
+    return <div className={styles.cardCountry}> <h2 style={{
         
     }}>   {"Nombre Act: " + x.name} <br/> 
           {"Dificulta: "+x.Dificulty} <br/>
           Duracion:{x.duracion} <br/>
           Temporada:{x.Temporada} <br/>
-          </h2>}
+          </h2>
+          </div>
+        
+        }
    })
    
 return <></>
