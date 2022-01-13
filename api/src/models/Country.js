@@ -16,7 +16,7 @@ module.exports = (sequelize) => {
     },
     name: {
       type: DataTypes.STRING, 
-      allowNull: false, 
+      allowNull: false,  
     },
     imageflag: {
       type: DataTypes.STRING,

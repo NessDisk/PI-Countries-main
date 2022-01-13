@@ -10,6 +10,7 @@ import OrderByActivity from './components/orderByActivity';
 import Inicial from './components/inicial'
 import Nav from './components/Nav';
 import stylesIni from "./components/inicial.module.css";
+
 function App() {
   return (
     <div className="App">
@@ -25,7 +26,7 @@ function App() {
                    <Route path="/p"  >
                            <Nav />                              
                          
-                      
+                     
                           <ul>
                          <div style={
                             {float: 'right'}
@@ -35,13 +36,9 @@ function App() {
                           <li><OrderbyContinente /></li>
                           <li><OrderByActivity/></li>
                           </div>
-                          </ul> 
-
+                          </ul>
+                              <Countrys/> 
                            
-
-
-                             <Countrys/>
-                        
                      
                    </Route> 
                    <Route path="/">

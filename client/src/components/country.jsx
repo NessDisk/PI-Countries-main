@@ -11,8 +11,7 @@ export default function  Country({id,name,continente, flag} )
       <Link to={`/p/${id}`}>
       <div>
       <img src={flag} className={styles.flag}/>
-      <h5>{name} / {continente}</h5>  
-     
+      <h5>{name} / {continente}</h5>    
       </div>
 
       </Link>

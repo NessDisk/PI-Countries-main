@@ -1,6 +1,15 @@
 import { useDispatch } from "react-redux" 
-import { ASCENDENTE ,DECENDENTE,CONTIENENTE,POBLACION, MENOR_POBLACION, ACTIVIDAD} from "../constante/sort"
-import {Sort,Order_Population} from "../store/actions/index"
+import { ASCENDENTE ,
+          DECENDENTE,
+          CONTIENENTE,
+          POBLACION,
+           MENOR_POBLACION,
+            ACTIVIDAD,
+            AREA_ASENDENTE ,
+AREA_DECENDENTE,
+        
+        } from "../constante/sort"
+import {Sort,ORDER_POPULATION} from "../store/actions/index"
 
 export default function Order()
 {       
@@ -15,7 +24,11 @@ function onSelectChange(e)
    }
    else if(value === POBLACION || value === MENOR_POBLACION)
    {
-    dispach(Order_Population(e.target.value)); 
+    dispach(ORDER_POPULATION(e.target.value)); 
+   }
+   else if(value === AREA_ASENDENTE)
+   {
+    dispach(ORDER_POPULATION(e.target.value)) 
    }
 
 }
@@ -26,6 +39,8 @@ function onSelectChange(e)
         <option value={DECENDENTE} > DECENDENTE</option>
         <option value={POBLACION} > POBLACION</option>
         <option value={MENOR_POBLACION} > MENOR POBLACION</option>
+        <option value={AREA_ASENDENTE} > Area</option>
+        <option value={AREA_DECENDENTE} > Area</option>
     </select>
 
 }

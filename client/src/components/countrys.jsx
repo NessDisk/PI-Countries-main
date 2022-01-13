@@ -21,7 +21,7 @@ export default function  Countrys()
     {
         e.preventDefault();
 
-
+console.log(e.target)
 
 
 if(e.target.value === ">>"&& (auxNumAction+10) < 260  )
@@ -97,18 +97,36 @@ if(e.target.value === ">>"&& (auxNumAction+10) < 260  )
                  }
  
    <ul>
-          
-        <button type="submit" onClick={ActionOnSumbite} value="<<" className={styles.button} >
-        <HiChevronDoubleLeft style={{
+   <li>  <form type="submit" onClick={ActionOnSumbite} >
+        <input type="submit"  value="<<"  className={styles.button} style={{
+            color: "white",
+            fontSize: "32px",    
+        }} />     
+      </form> </li>
+      {/* <button type="submit" onClick={ActionOnSumbite}  value=">>"  className={styles.button2}> */}
+        {/* <HiChevronDoubleRight value=">>" style={{
             color: "white"
-        }} />
-      </button>
-      <button type="submit" onClick={ActionOnSumbite} value=">>"  className={styles.button2}>
-        <HiChevronDoubleRight  style={{
-            color: "white"
-        }}/>
-      </button>
+        }}/> */}
+      {/* </button> */}
+     
+
+       <li>
+        <form type="submit" onClick={ActionOnSumbite} >
+        <input type="submit"  value=">>"  className={styles.button2} style={{
+            color: "white",
+            fontSize: "32px",  
+            fontWeight: "200"
+            // transform: 'scale(1, 1)'
+        }} />     
+      </form>
+      </li>
+     
+   <li><h4 style={{
+            
+            color: "white",
+            position: "relative",
+ left: "660px",
+            }} > {auxNumAction+"/250"}</h4> </li>
    </ul>
-  
     </div>
 }

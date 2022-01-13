@@ -37,7 +37,7 @@ console.log(activtyx)
 
     return<select name="select" onChange={onSelectChange}>
              
-                  <option className="Activity" value={"nada"}  > nada</option>
+                  <option className="Activity" value={"nada"}  > {"Actividades"}</option>
          {
             activtyx.map((x)=>{
 

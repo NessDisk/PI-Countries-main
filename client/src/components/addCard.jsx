@@ -9,8 +9,6 @@ export default  function  AddActivity()
     let Countryx  = useSelector((state) => state.countris)
     let Activty  = useSelector((state) => state.activty)
 
-   
-    
     const [name, setNombre] = useState(``)
     const [Dificulty, setDificulty] = useState(``)
     const [duracion, setDuration] = useState(``)
@@ -31,11 +29,7 @@ setDuration(DuracionAux.value)
 setSeason(TemporadaAux.value)
   
 
-//    console.log(DificultadAux.value)
-//    { Dificultad
-//     Duracion
-//     Temporada}
-// ciudades  activas
+
 
 
 
@@ -54,7 +48,7 @@ for(let i = 0 ; i < ciudades.length; i++)
 for (let index = ciudades.length - 1; index >= 0; index--) {
 ciudades[index].parentNode.removeChild(ciudades[index]);
 }
-console.log(AuxResult);
+
 
   //crea la nueva actividad  post
   await dispatch(AddNewActivity(
@@ -63,9 +57,6 @@ console.log(AuxResult);
         AuxResult
     }
  ))
-
-// console.log(AuxResult);
-
 
 
     }
@@ -114,10 +105,10 @@ console.log(AuxResult);
            
            <label htmlFor="">Duracion</label>
            <select name="select" id="Duracion" className="Duracion" onChange={OnchenageDuration} value={duracion}>
-           <option value={"1"} > 1</option>
+              <option value={"1"} > 1</option>
            <option value={"2"} > 2</option>
            <option value={"3"} > 3</option>
-           <option value={"4"} > 3</option>         
+           <option value={"4"} > 4</option>         
            <option value={"5"} > 5</option>
           </select>
            <br/>
@@ -131,15 +122,7 @@ console.log(AuxResult);
           </select>
            <br/>
            <br/>           
-           {/* <h2> ------------------------------------------</h2> */}
-           {/* { Countryx.map( (country)=>{
-
-                return<div>
-                     <input type="checkbox" className="ciudades" key={country.id} name={country.name} /> {country.name} 
-                </div>
-            })  } */}
-
-           {/* <input type="submit" />    */}
+         
 
 
            

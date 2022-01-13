@@ -54,38 +54,66 @@ export default  function  AddActivity()
             AuxResult[ciudades[i].value] = ciudades[i].value
             
         }
-        
-        // for (index = ciudades.length - 1; index >= 0; index--) {
-        //     ciudades[index].parentNode.removeChild(ciudades[index]);
-        // }
+        let Verificador = false;
+      
+        for (let index = 0; index < NombreAux.length; index++) {
+          
+            const busqueda = NombreAux[index];
+           
 
-        
-        // console.log(AuxResult);
-        
-        // //crea la nueva actividad  post
-        // await dispatch(AddNewActivity(
-        //     {
-        //         actividad:{name ,Dificulty,duracion,Temporada},
-        //         AuxResult
-        //     }
-        //     ))
+            if(NombreAux[index].value === ""){
+                 window.alert("actividad #"+(index+1) +" no tiene Nombre.");
+                 Verificador = true                
+            }
+            if(Verificador === true)break;
+           
+            // busca actividadades repetitas
+           for (let e = 0; e < Activty.length; e++) {
+               const element = Activty[e];
+               
+               if(element.name === NombreAux[index].value)
+               {
+                window.alert("Actividad #"+(index+1) +" ya existe.");
+                Verificador = true
+               break
+               }
+           }
+           if(Verificador === true)break;
+
+           //busca  actividades repetidas dentro la busqueda actual
+           for (let e = 0; e < NombreAux.length; e++)
+           { 
+                let consulta = NombreAux[e];
+                    if(busqueda === consulta && e !== index)
+                    {
+                        window.alert("Actividad #"+(index+1) +" ya existe en la consulta actual");
+                        Verificador = true
+                       break
+                    }
+           }           
+                    if(Verificador === true)break;
+            
+            }
+            if(Verificador === true)
+            {
+                return
+            } 
 
             for (let index = 0; index < DificultadAux.length; index++) {
-             console.log("contador")
+                // if(NombreAux[index].value === ""){
+                //      window.alert("actividad #"+(index+1) +" no tiene Nombre.");
+                //      break
+                //     }
+
 let name = NombreAux[index].value;
 let Dificulty = DificultadAux[index].value;
 let duracion = DuracionAux[index].value;
 let Temporada = TemporadaAux[index].value;
-setNombre(name)
-setDificulty(Dificulty)
-setDuration(duracion)
-setSeason(Temporada)
-                // await dispatch(AddNewActivity(
-                //     {
-                //         actividad:{name ,Dificulty,duracion,Temporada },
-                //         AuxResult
-                //     }
-                //     ))  
+// setNombre(name)
+// setDificulty(Dificulty)
+// setDuration(duracion)
+// setSeason(Temporada)
+        
                     await dispatch(AddNewActivity(
                         {
                             actividad:{
@@ -235,7 +263,7 @@ return <li>{x} </li>
 
 </div>
 
-<form onSubmit={submitAction}>
+<form onSubmit={submitAction} >
       <button type="submit">Post Actividad</button>
     </form>
     </div>

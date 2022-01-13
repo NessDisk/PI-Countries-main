@@ -3,25 +3,41 @@ const {Op} = require(`sequelize`)
 const {Country} = require('../db');
 const axios = require("axios");
 const router = Router();
+var customData = require('./apiKey.json');
 
 router.get("/",async(req, res, next)=>{
   
-   let listacompletaciudades;   
+    let emergencia =false;
+    let listacompletaciudades 
 
 
+    if(emergencia === true)
+    {
+        listacompletaciudades = Object.values(customData)
 
- listacompletaciudades = axios.get("https://restcountries.com/v2/all")
-let datas = await listacompletaciudades;
+    }
+    else 
+    {
+            listacompletaciudades = axios.get("https://restcountries.com/v2/all")
+    }
+    
+    
+    let datas = await listacompletaciudades;
+    
+ 
 
 
 const citis  =  await Country.findAll()
 if(citis.length === 0 )
 {
 
-
-   
-
-    let test = datas.data.map((countrys)=>{
+    let test
+//    console.log(datas.data[0])
+// return
+if(emergencia === true)
+{
+    
+     test = datas.map((countrys)=>{
 
     return {     
               id: countrys.alpha3Code, 
@@ -35,6 +51,24 @@ if(citis.length === 0 )
 }
 
 })
+}
+else{
+      test = datas.data.map((countrys)=>{
+
+        return {     
+                  id: countrys.alpha3Code, 
+                name: countrys.name,
+                imageflag:countrys.flag,
+                Continente: countrys.region,
+                capital   : countrys.capital,
+                Subregion : countrys.subregion,
+                Area: countrys.area,
+                Poblation: countrys.population
+    }
+    
+    })
+}
+
 
     let index = 0;   
     try{ 
@@ -46,7 +80,7 @@ if(citis.length === 0 )
       res.send(citis)
 }catch(error)
 {
-    console.log(test[index]);
+  
     next(error)
 }
 

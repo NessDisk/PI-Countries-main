@@ -2,14 +2,17 @@ const { Router } = require('express');
 const {Op} = require(`sequelize`)
 const {Activity, Country, Country_Activity} = require('../db');
 const axios = require("axios");
-const router = Router();
+const router = Router(); 
+var customData = require('./apiKey.json');
 
 
 router.get("/",async(req, res, next)=>{
+console.log(req.body)
     const activitis  =  await Activity.findAll()
-    res.send(activitis)  
+    console.log(activitis)
+    res.send(activitis)   
 })
-
+ 
 router.get("/AC/:name",async(req, res, next)=>{
 
 
@@ -93,7 +96,7 @@ console.log(req.body.activity.AuxResult)
      let namex =   arrayCountris[i]
      
      let  CountryX = await Country.findOne(
-         { where: { name: {
+         { where: { name: { 
              [Op.iLike]: "%"+namex+"%"
             }},
         }) 

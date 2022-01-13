@@ -1,5 +1,5 @@
 import Order from '../../components/order'
-import { ASCENDENTE , DECENDENTE,POBLACION, } from '../../constante/sort'
+import { ASCENDENTE , DECENDENTE,POBLACION,AREA_ASENDENTE } from '../../constante/sort'
 import {GET_ALL_COUNTRY,
         GET_COUNTRY,
         SORT,
@@ -8,7 +8,8 @@ import {GET_ALL_COUNTRY,
         ORDER_ACTIVIDAD ,
         ADD_ACTIVITY ,
         GET_ALL_ACTIVITY,
-        GET_COUNTRY_BY_ACTIVITY
+        GET_COUNTRY_BY_ACTIVITY,
+        ORDER_POPULATION
         } from '../actions'
 
         import { none } from '../../constante/cotinents'
@@ -149,8 +150,44 @@ case ORDER_CONTINENT:
                 ...state,      
                 countris: action.payload
             }
-    
+    case ORDER_POPULATION:
 
+        orderCountry = [...state.countris]
+
+        const bubbleSortT = arr => {
+            const l = arr.length;
+            for (let i = 0; i < l; i++ ) {
+              for (let j = 0; j < l - 1 - i; j++ ) {
+    
+                if(AREA_ASENDENTE === action.payload)
+                {
+                    if ( arr[ j ].Area < arr[ j + 1 ].Area ) {
+                    [ arr[ j ], arr[ j + 1 ] ] = [ arr[ j + 1 ], arr[ j ] ];
+    
+                }
+                }else{
+                    if ( arr[ j ].Area > arr[ j + 1 ].Area ) {
+                        [ arr[ j ], arr[ j + 1 ] ] = [ arr[ j + 1 ], arr[ j ] ];
+        
+                    }
+    
+                }
+              }
+            }
+
+
+ return arr;
+      };
+      
+      orderCountry = bubbleSortT(orderCountry)
+
+     
+
+    return{
+        ...state,
+       // filerteredCountris: action.payload
+       countris: orderCountry
+    }
 
 default:
     return state

@@ -9,6 +9,7 @@ export const ORDER_ACTIVIDAD = 'ORDER_CONTINENT'
 export const ADD_ACTIVITY = 'ADD_ACTIVITY'
 export const GET_ALL_ACTIVITY = 'GET_ALL_ACTIVITY'
 export const GET_COUNTRY_BY_ACTIVITY = 'GET_COUNTRY_BY_ACTIVITY'
+export const ORDER_POPULATION = 'ORDER_POPULATION'
 
 export function getAllCountry()
 { 
@@ -120,6 +121,14 @@ export function Sort(Order)
 
 
 export function Order_Population(Order)
+{
+        return {
+        type:ORDER_POPULATION,
+        payload: Order
+        }
+}
+
+export function Order_Area(Order)
 {
         return {
         type:MAYOR_MENOR,
